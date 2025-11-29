@@ -7,8 +7,8 @@
 int main() {
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
-    int casas, opcao, peca, i = 0;
-    char direcao[50];
+    int casas, opcao, peca, cavalo1 = 1, cavalo2 = 2, i = 0, j = 0;
+    char direcao[50], direcao2[50];
 
     do {
         printf("### Jogo de Xadrez ###\n\n");
@@ -24,14 +24,15 @@ int main() {
                     printf("1. Rainha\n");
                     printf("2. Bispo\n");
                     printf("3. Torre\n");
-                    printf("4. Voltar\n");
+                    printf("4. Cavalo\n");
+                    printf("5. Voltar\n");
                     scanf("%d", &peca);
 
                     switch (peca) {
                         case 1:
                             printf("Quantas casas voce quer andar com a Rainha? (Diagonais e laterais)\n");
                             scanf("%d", &casas);
-                            printf("Para qual direcao?\n");
+                            printf("Para qual direção?\n");
                             scanf(" %49[^\n]", direcao);
 
                             for (i = 0; i < casas; i++) {
@@ -41,9 +42,10 @@ int main() {
                         case 2:
                             printf("Quantas casas voce quer andar com o Bispo (Diagonais: Cima-Esquerda)?\n");
                             scanf("%d", &casas);
-                            printf("Para qual direcao?\n");
+                            printf("Para qual direção?\n");
                             scanf(" %49[^\n]", direcao);
-                        
+                            
+                            i = 0;
                             while (i < casas) {
                                 printf("\nBispo: %s\n", direcao);
                                 i++;
@@ -52,8 +54,9 @@ int main() {
                         case 3:
                             printf("Quantas casas voce quer andar com a Torre? (Laterais: Cima, Esquerda)\n");
                             scanf("%d", &casas);
-                            printf("Para qual direcao?\n");
+                            printf("Para qual direção?\n");
                             scanf(" %49[^\n]", direcao);
+
                             i = 0;
                             do {
                                 printf("\nTorre: %s\n", direcao);
@@ -61,17 +64,31 @@ int main() {
                             } while (i < casas);
                             break;
                         case 4:
+                            printf("Para qual direção você quer andar duas casas com o cavalo? (Ex: Direita)\n");
+                            scanf(" %49[^\n]", direcao);
+                            printf("Para qual direção o cavalo vai fazer o L? (Ex: 1 casa -> Cima)\n");
+                            scanf(" %49[^\n]", direcao2);
+                            for (i = 0; i < cavalo1; i++) {
+                                while (j < cavalo2) {
+                                    printf("\nCavalo: %s\n", direcao);
+                                    j++;
+                                }
+                                printf("\nCavalo: %s\n", direcao2);   
+                            }
+                            break;
+                        case 5:
                             break;
                         default:
                             printf("Opcao invalida\n");
                     }
-                } while (peca != 4);
+                } while (peca != 5);
                 break;
             case 2:
-                printf("\nSelecione a peca desejada, o numero de casas e a direcao para onde voce quer que ela va.\n");
+                printf("\nSelecione a peça desejada, o número de casas (quando necessário) e a direção para onde você quer que ela vá.\n");
                 printf("Bispo: anda na diagonal. Ex: Cima Direita\n");
                 printf("Torre: anda para os lados e para cima e para baixo. Ex: Esquerda\n");
-                printf("Rainha: anda em qualquer direcao. Ex: Cima; Baixo Esquerda\n");
+                printf("Rainha: anda em qualquer direção. Ex: Cima; Baixo Esquerda\n");
+                printf("Cavalo: anda em L. Ex: Cima Cima Direita\n\n");
                 break;
             case 3:
                 printf("Saindo...\n");
